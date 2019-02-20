@@ -1,5 +1,6 @@
 package br.com.senaigo.exemplo1;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -26,9 +27,13 @@ public class Login extends AppCompatActivity {
 
         if (pegaSenha.trim().equals("123") && pegaUsuario.trim().equals("susu")) {
             Intent intent = new Intent(this, Principal.class);
+            intent.putExtra("EXTRA", pegaUsuario);
             startActivity(intent);
         } else {
-
+            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle("Erro!");
+            alertDialog.setMessage("Ta errado o Login!");
+            alertDialog.show();
         }
     }
 }
